@@ -1,4 +1,4 @@
-"Fourier analysis failed attempt. Uncommenting the second pair"
+"Fourier analysis to decompose complex waves. It also generates a random wave for you"
 import math
 import plotly
 from random import random
@@ -38,15 +38,14 @@ def slow_fourier_analysis(series):
 def slow_fourier_helper(series, fn):
     num_elements = len(series)
     coefficients = []
-    periods = [num_elements/(index+1)
-               for index in range(num_elements)]
-    for period in periods:
+    for period in range(num_elements):
         coefficient_total = 0
         for index in range(num_elements):
-            amount = 2*math.pi*index*period/num_elements
+            amount = 2*math.pi*index/(1+period)
             coefficient_total += fn(amount)*series[index]
         coefficients.append(coefficient_total)
-    return coefficients
+    coefficients = [c/(len(series)/2) for c in coefficients]
+    return [0] + coefficients
 
 
 def create_defined_series(pairs, num_elements):
