@@ -49,12 +49,12 @@ def slow_fourier_helper(series, fn):
 
 
 def create_defined_series(pairs, num_elements):
-    final_series = [1 for _ in range(num_elements)]
+    final_series = [0 for _ in range(num_elements)]
     for pair in pairs:
         for index in range(num_elements):
             amount = 2*math.pi*index/pair[0]
             tmp = pair[1] * math.sin(amount)
-            final_series[index] = tmp * final_series[index]
+            final_series[index] = tmp + final_series[index]
     series_string = ",".join(str(f) for f in final_series)
     f = open("define_series.data", "w")
     f.write(series_string)
@@ -62,11 +62,12 @@ def create_defined_series(pairs, num_elements):
 
 
 def create_series():
-    series_length = 500
-    series = ",".join([str(random()) for _ in range(series_length)])
-    f = open("series.data", "w")
-    f.write(series)
-    f.close()
+    pairs = []
+    for _ in range(3):
+        pairs.append([choice(range(10, 200)), choice(range(5,1000))])
+        print("frequency", pairs[-1][0], "amplitude", pairs[-1][1])
+    length = 3000
+    create_defined_series(pairs, length)
 
 
 def get_series(whatever=False):
