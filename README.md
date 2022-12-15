@@ -1,12 +1,10 @@
 # Fourier Analysis
 
-This words nicely for sine waves. You might need to adjust it for cos.
+This works nicely for sine waves. You might need to adjust it for cos.
 
 Input series composed of three sine waves:
 
-frequency 95 amplitude 967
-frequency 140 amplitude 731
-frequency 170 amplitude 53
+frequency 95 amplitude 967, frequency 140 amplitude 731, frequency 170 amplitude 53
 
 ![Input wave](wave_to_decompose.png "input wave series")
 
