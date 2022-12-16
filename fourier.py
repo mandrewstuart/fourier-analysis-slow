@@ -5,15 +5,8 @@ from random import random
 
 
 def main():
-    # each pair is made of the frequency and amplitude.
-    # note: because the only uncommented pair has frequency of 11,
-    # the last browser tab will show the 10 as the highest magnitude (indicating 0-indexed)
-    pairs = [[11, 10],
-            #[51, 14]
-             ]
-    length = 600
     # define a series into a file
-    create_defined_series(pairs, length)
+    create_series()
     # read from the file
     series = get_series()
     # examine the series using plotly, which opens a browser
@@ -61,9 +54,9 @@ def create_defined_series(pairs, num_elements):
     f.close()
 
 
-def create_series():
+def create_series(num_waves = 3):
     pairs = []
-    for _ in range(3):
+    for _ in range(num_waves):
         pairs.append([choice(range(10, 200)), choice(range(5,1000))])
         print("frequency", pairs[-1][0], "amplitude", pairs[-1][1])
     length = 3000
